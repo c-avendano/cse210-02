@@ -1,5 +1,5 @@
 from game.deck import Deck
-
+import random
 
 class Dealer:
     """A person who directs the game. 
@@ -99,4 +99,21 @@ class Dealer:
         else:
             print(f"Score is 0 or lower-- Game over!")
 
-    # HELLOOOOOOOOO!!!!!!
+    def current_card():
+        old = random.randint(1, 13)
+        new = random.randint(1, 13)
+        print(old)
+        user = input("H/L: ")
+        print(new)
+
+        if old > new and user.lower() == "l":
+            print("Your right!")
+
+        elif old > new and user.lower() == "h":
+            print("Your wrong...")
+
+        elif old < new and user.lower() == "h":
+            print("Your right!")
+
+        elif old < new and user.lower() == "l":
+            print("Your wrong...")
