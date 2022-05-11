@@ -1,5 +1,8 @@
 from game.deck import Deck
-import random
+
+
+
+points=300
 
 class Dealer:
     """A person who directs the game. 
@@ -19,34 +22,73 @@ class Dealer:
         Args:
             self (Dealer): an instance of Dealer.
         """
-        self.dice = []
+        self.deck = []
         self.is_playing = True
         self.score = 300
         self.total_score = 300
 
-        for i in range(5):
-            Deck = Deck()
-            self.dice.append(Deck)
+        # for i in range(1,13):
+        #     deck = Deck()
+        #     self.deck.append(Deck)
 
     def start_game(self):
-        """Starts the game by running the main game loop.
+        """Starts the game by running the main game loop. This is the equivalent of "main"
         
         Args:
             self (Dealer): an instance of Dealer.
         """
         while self.is_playing:
-            self.get_inputs()
-            self.do_updates()
-            self.do_outputs()
+            self.current_card()
+            self.points()
+            # self.do_outputs()
 
-    def get_inputs(self):
-        """Ask the user if they want to roll.
 
-        Args:
-            self (Dealer): An instance of Dealer.
-        """
-        roll_dice = input("Roll dice? [y/n] ")
-        self.is_playing = (roll_dice == "y")
+
+    def current_card(self):
+        
+        old = self.draw
+        new = self.draw
+        print(old)
+
+
+        user = input("H/L: ")
+        print(new)
+        if old > new and user.lower() == "l" or old < new and user.lower() == "h":
+            print("Your right!")
+            current_points = points+100
+            print(f"you have {current_points} points")
+
+        elif old > new and user.lower() == "h" or old < new and user.lower() == "l":
+            print("Your wrong...")
+            current_points = points-75
+            print(f"you have {current_points} points")
+        return current_points
+
+
+    def points(self,current_points):
+        """This displays the latest card and the score. If score isn't equal to 0, it will ask if user wants to keep playing"""
+
+        if current_points > 0:
+            first_command = input(f"The current points are {current_points}. Want to draw a card? Y/N")
+            
+            if first_command == "Y":
+                self.current_card()
+
+            else:
+                print("No worries. Game over")
+        else:
+            print(f"Score is 0 or lower-- Game over!")    
+
+
+
+    # def get_inputs(self):
+    #     """Ask the user if they want to roll.
+
+    #     Args:
+    #         self (Dealer): An instance of Dealer.
+    #     """
+    #     roll_dice = input("Roll dice? [y/n] ")
+    #     self.is_playing = (roll_dice == "y")
        
     # def do_updates(self):
     #     """Updates the player's score.
@@ -75,7 +117,7 @@ class Dealer:
         
     #     values = ""
     #     for i in range(len(self.dice)):
-    #         Deck = self.dice[i]
+    #         Dice = self.dice[i]
     #         values += f"{Deck.value} "
 
     #     print(f"You rolled: {values}")
@@ -83,37 +125,6 @@ class Dealer:
     #     self.is_playing == (self.score > 0)
 
 
-    def points(self):
-        """This displays the latest card and the score. If score isn't equal to 0, it will ask if user wants to keep playing"""
-        points_total=300
 
-        if points_total > 0:
-            first_command = input(f"The current points are {points_total}. Want to draw a card? Y/N")
-            
-            if first_command == "Y":
-                #here comes high_or_low, if correct then here we'll add value to points total, if incorrect remove it. Then we loop back to the beggining with the correct point total.
-                print("just filling space with this")
 
-            else:
-                print("No worries. Game over")
-        else:
-            print(f"Score is 0 or lower-- Game over!")
 
-    def current_card():
-        old = random.randint(1, 13)
-        new = random.randint(1, 13)
-        print(old)
-        user = input("H/L: ")
-        print(new)
-
-        if old > new and user.lower() == "l":
-            print("Your right!")
-
-        elif old > new and user.lower() == "h":
-            print("Your wrong...")
-
-        elif old < new and user.lower() == "h":
-            print("Your right!")
-
-        elif old < new and user.lower() == "l":
-            print("Your wrong...")
