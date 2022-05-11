@@ -47,8 +47,10 @@ class Deck:
         Args:
             self (Die): An instance of Die.
         """
-        self.value = 0
-        self.points = 0
+        self.old = 0
+        self.new = 0
+        self.points = 300
+        self.user = ""
 
     def roll(self):
         """Generates a new random value and calculates the points for the die.
@@ -56,5 +58,18 @@ class Deck:
         Args:
             self (Die): An instance of Die.
         """
-        self.value = random.randint(1, 14)
-        self.points = 50 if self.value == 5 else 100 if self.value == 1 else 0
+        self.old = random.randint(1, 13)
+        self.new = random.randint(1, 13)
+        print(self.old)
+        self.user = input("H/L?: ")
+        # self.points = self.points+100 if self.old < self.new and self.user.lower() == "h" or self.old > self.new and self.user.lower() == "l" else self.points-75 if self.old > self.new and self.user.lower() == "h" or self.old < self.new and self.user.lower() == "l" else 0
+        
+        if self.old < self.new and self.user.lower() == "h" or self.old > self.new and self.user.lower() == "l":
+            self.points+=100
+            return
+
+        elif self.old > self.new and self.user.lower() == "h" or self.old < self.new and self.user.lower() == "l":
+            self.points-=75 
+            return
+
+        else: 0
