@@ -47,7 +47,7 @@ class Dealer:
         Args:
             self (Director): An instance of Director.
         """
-        roll_dice = input("Draw a card? [y/n] ")
+        roll_dice = input("Play again? [y/n]: ")
         self.is_playing = (roll_dice == "y")
        
     def do_updates(self):
@@ -80,7 +80,7 @@ class Dealer:
             deck = self.deck[i]
             values += f"{deck.new} "
 
-        print(f"You rolled: {values}")
+        print(f"Next cart was: {values}")
         print(f"Your score is: {self.total_score}\n")
         self.is_playing == (self.score > 0)
 
