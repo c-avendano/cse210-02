@@ -31,7 +31,7 @@ class Deck:
         self.old = random.randint(1, 13)
         self.new = random.randint(1, 13)
         print(self.old)
-        self.user = input("H/L?: ")
+        self.user = input("Higher or Lower? [h/l]: ")
                 
         if self.old < self.new and self.user.lower() == "h" or self.old > self.new and self.user.lower() == "l":
             self.points+=100
