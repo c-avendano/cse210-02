@@ -37,9 +37,10 @@ class Dealer:
             self (Director): an instance of Director.
         """
         while self.is_playing:
-            self.get_inputs()
+            
             self.do_updates()
             self.do_outputs()
+            self.get_inputs()
 
     def get_inputs(self):
         """Ask the user if they want to roll.
@@ -47,9 +48,11 @@ class Dealer:
         Args:
             self (Director): An instance of Director.
         """
-        play_again = input("Play again? [y/n]: ")
+        play_again = input("Play again? [y/n]:")
         self.is_playing = (play_again == "y")
-       
+        print()
+
+
     def do_updates(self):
         """Updates the player's score.
 
@@ -64,7 +67,10 @@ class Dealer:
             deck = self.deck[i]
             deck.roll()
             self.score = deck.points 
-        self.total_score = self.score        
+        self.total_score = self.score   
+
+        if self.total_score <= 0:
+            not self.is_playing     
 
     def do_outputs(self):
         """Displays the dice and the score. Also asks the player if they want to roll again. 
@@ -73,6 +79,7 @@ class Dealer:
             self (Director): An instance of Director.
         """
         if not self.is_playing:
+            print("GAME OVER!")
             return
         
         values = ""
@@ -81,6 +88,6 @@ class Dealer:
             values += f"{deck.new} "
 
         print(f"Next cart was: {values}")
-        print(f"Your score is: {self.total_score}\n")
+        print(f"Your score is: {self.total_score}")
         self.is_playing == (self.score > 0)
 
