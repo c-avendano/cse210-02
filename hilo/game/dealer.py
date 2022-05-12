@@ -48,9 +48,14 @@ class Dealer:
         Args:
             self (Director): An instance of Director.
         """
-        play_again = input("Play again? [y/n]:")
-        self.is_playing = (play_again == "y")
-        print()
+        if self.total_score <= 0:
+            self.is_playing = False
+            print('GAME OVER')
+
+        else: 
+            play_again = input("Play again? [y/n]:")
+            self.is_playing = (play_again == "y")
+            print()
 
 
     def do_updates(self):
@@ -60,17 +65,13 @@ class Dealer:
             self (Director): An instance of Director.
         """
         if not self.is_playing:
-            return 
-
+            return
 
         for i in range(len(self.deck)):
             deck = self.deck[i]
             deck.roll()
             self.score = deck.points 
-        self.total_score = self.score   
-
-        if self.total_score <= 0:
-            not self.is_playing     
+        self.total_score = self.score        
 
     def do_outputs(self):
         """Displays the dice and the score. Also asks the player if they want to roll again. 

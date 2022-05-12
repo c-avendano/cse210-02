@@ -38,7 +38,7 @@ class Deck:
             return
 
         elif self.old > self.new and self.user.lower() == "h" or self.old < self.new and self.user.lower() == "l":
-            self.points-=500 
+            self.points-= 75 
             return
 
         else: 0
