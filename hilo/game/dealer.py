@@ -53,8 +53,12 @@ class Dealer:
             print('GAME OVER')
 
         else: 
-            play_again = input("Play again? [y/n]:")
+            play_again = input("Play again? [y/n]: ")
             self.is_playing = (play_again == "y")
+            if not self.is_playing:
+                print()
+                print('Thanks for playing')
+
             print()
 
 
