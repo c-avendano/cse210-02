@@ -30,7 +30,7 @@ class Deck:
         """
         self.old = random.randint(1, 13)
         self.new = random.randint(1, 13)
-        print(self.old)
+        print(f'The card is: {self.old}')
         self.user = input("Higher or Lower? [h/l]: ")
                 
         if self.old < self.new and self.user.lower() == "h" or self.old > self.new and self.user.lower() == "l":
@@ -38,7 +38,7 @@ class Deck:
             return
 
         elif self.old > self.new and self.user.lower() == "h" or self.old < self.new and self.user.lower() == "l":
-            self.points-=75 
+            self.points-=500 
             return
 
         else: 0
