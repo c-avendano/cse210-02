@@ -47,8 +47,8 @@ class Dealer:
         Args:
             self (Director): An instance of Director.
         """
-        roll_dice = input("Play again? [y/n]: ")
-        self.is_playing = (roll_dice == "y")
+        play_again = input("Play again? [y/n]: ")
+        self.is_playing = (play_again == "y")
        
     def do_updates(self):
         """Updates the player's score.
