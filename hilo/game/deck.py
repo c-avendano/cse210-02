@@ -2,20 +2,19 @@ import random
 
 
 class Deck:
-    """A small cube with a different number of spots on each of its six sides.
-
-    The responsibility of Die is to keep track of the side facing up and calculate the points for 
-    it.
+    """A Deck of cards from 1 to 13. This class will bring up a number at random.
    
     Attributes:
-        value (int): The number of spots on the side facing up.
+        old (int): The number the previous card.
+        new (int): The number of the current card.
     """
 
     def __init__(self):
         """Constructs a new instance of Die.
 
         Args:
-            self (Die): An instance of Die.
+        old (int): The number the previous card.
+        new (int): The number of the current card.
         """
         self.old = 0
         self.new = 0
@@ -23,10 +22,12 @@ class Deck:
         self.user = ""
 
     def roll(self):
-        """Generates a new random value and calculates the points for the die.
+        """Rolls a new random value, compares it with the old one and calculates the points you get from the card.
         
         Args:
-            self (Die): An instance of Die.
+        old (int): The number the previous card.
+        new (int): The number of the current card.
+            
         """
         self.old = random.randint(1, 13)
         self.new = random.randint(1, 13)
